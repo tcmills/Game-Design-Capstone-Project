@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 772978578880897501}
   - component: {fileID: 772978578880897500}
+  - component: {fileID: -565813211489991229}
   m_Layer: 5
   m_Name: Rune_Point
   m_TagString: Untagged
@@ -87,6 +88,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &-565813211489991229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772978578880897502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f2b709b66fd394a91d31316b669c08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &772978579083844668
 GameObject:
   m_ObjectHideFlags: 0

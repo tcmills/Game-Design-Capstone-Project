@@ -43,6 +43,18 @@ public class SpellManager : MonoBehaviour
 
     public void Toggled(int id, bool value)
     {
+        runePointValues[id] = value;
+        order++;
+        runePointOrder[id] = order;
 
+        foreach (bool values in runePointValues)
+        {
+            Debug.Log("" + values);
+        }
+
+        foreach (int ids in runePointOrder)
+        {
+            Debug.Log("" + ids);
+        }
     }
 }
