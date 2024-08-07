@@ -7,6 +7,7 @@ public class RunePoint : MonoBehaviour
 {
 
     public int runePointId;
+    public GameObject line;
     private SpellManager spellManager;
     private Toggle runePoint;
 
@@ -14,7 +15,7 @@ public class RunePoint : MonoBehaviour
     void Start()
     {
 
-        spellManager = this.transform.parent.gameObject.GetComponent<SpellManager>();
+        spellManager = this.transform.parent.parent.gameObject.GetComponent<SpellManager>();
         runePoint = GetComponent<Toggle>();
 
         runePoint.onValueChanged.AddListener(delegate

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f2b709b66fd394a91d31316b669c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runePointId: 0
 --- !u!1 &772978579083844668
 GameObject:
   m_ObjectHideFlags: 0
