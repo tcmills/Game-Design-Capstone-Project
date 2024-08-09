@@ -15,6 +15,15 @@ public class SpellManager : MonoBehaviour
     private GameObject runePoint6;
     private GameObject runePoint7;
 
+    private RunePoint runePoint0Script;
+    private RunePoint runePoint1Script;
+    private RunePoint runePoint2Script;
+    private RunePoint runePoint3Script;
+    private RunePoint runePoint4Script;
+    private RunePoint runePoint5Script;
+    private RunePoint runePoint6Script;
+    private RunePoint runePoint7Script;
+
     private bool[] runePointValues = { false, false, false, false, false, false, false, false };
     private int[] runePointOrder = { 0, 0, 0, 0, 0, 0, 0, 0 };
     private int order = 0;
@@ -32,14 +41,43 @@ public class SpellManager : MonoBehaviour
         runePoint6 = this.transform.GetChild(1).GetChild(6).gameObject;
         runePoint7 = this.transform.GetChild(1).GetChild(7).gameObject;
 
-
+        runePoint0Script = runePoint0.GetComponent<RunePoint>();
+        runePoint1Script = runePoint1.GetComponent<RunePoint>();
+        runePoint2Script = runePoint2.GetComponent<RunePoint>();
+        runePoint3Script = runePoint3.GetComponent<RunePoint>();
+        runePoint4Script = runePoint4.GetComponent<RunePoint>();
+        runePoint5Script = runePoint5.GetComponent<RunePoint>();
+        runePoint6Script = runePoint6.GetComponent<RunePoint>();
+        runePoint7Script = runePoint7.GetComponent<RunePoint>();
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ClearSpell()
     {
+        for (int k = 0; k < runePointValues.Length; k++)
+        {
+            runePointValues[k] = false;
+        }
+
+        for (int l = 0; l < runePointOrder.Length; l++)
+        {
+            runePointOrder[l] = 0;
+        }
         
+        order = 0;
+
+        runePoint0Script.ResetRunePoint();
+        runePoint1Script.ResetRunePoint();
+        runePoint2Script.ResetRunePoint();
+        runePoint3Script.ResetRunePoint();
+        runePoint4Script.ResetRunePoint();
+        runePoint5Script.ResetRunePoint();
+        runePoint6Script.ResetRunePoint();
+        runePoint7Script.ResetRunePoint();
+
+        //Debug.Log("" + runePointValues[0] + runePointValues[1] + runePointValues[2] + runePointValues[3] + runePointValues[4] + runePointValues[5] + runePointValues[6] + runePointValues[7]);
+        //Debug.Log("" + runePointOrder[0] + runePointOrder[1] + runePointOrder[2] + runePointOrder[3] + runePointOrder[4] + runePointOrder[5] + runePointOrder[6] + runePointOrder[7]);
+        //Debug.Log("\n");
     }
 
     public void Toggled(int id, bool value)
@@ -48,15 +86,9 @@ public class SpellManager : MonoBehaviour
         order++;
         runePointOrder[id] = order;
 
-        //foreach (bool values in runePointValues)
-        //{
-        //    Debug.Log("" + values);
-        //}
-
-        //foreach (int ids in runePointOrder)
-        //{
-        //    Debug.Log("" + ids);
-        //}
+        //Debug.Log("" + runePointValues[0] + runePointValues[1] + runePointValues[2] + runePointValues[3] + runePointValues[4] + runePointValues[5] + runePointValues[6] + runePointValues[7]);
+        //Debug.Log("" + runePointOrder[0] + runePointOrder[1] + runePointOrder[2] + runePointOrder[3] + runePointOrder[4] + runePointOrder[5] + runePointOrder[6] + runePointOrder[7]);
+        //Debug.Log("\n");
 
 
         RectTransform point1 = null;
@@ -95,7 +127,7 @@ public class SpellManager : MonoBehaviour
                     break;
             }
 
-            for (int i = 0; i < runePointOrder.Length;i++)
+            for (int i = 0; i < runePointOrder.Length; i++)
             {
                 if (runePointOrder[i] == order-1)
                 {
@@ -136,9 +168,9 @@ public class SpellManager : MonoBehaviour
                 lineRectTransform = line.GetComponent<RectTransform>();
 
                 lineRectTransform.localPosition = (point1.localPosition + point2.localPosition) / 2;
-                Vector3 diffVector = point1.localPosition - point2.localPosition;
-                lineRectTransform.sizeDelta = new Vector3(diffVector.magnitude, 10);
-                lineRectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, 180 * Mathf.Atan(diffVector.y / diffVector.x) / Mathf.PI));
+                Vector3 difference = point1.localPosition - point2.localPosition;
+                lineRectTransform.sizeDelta = new Vector3(difference.magnitude, 10);
+                lineRectTransform.rotation = Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan(difference.y / difference.x) * 180) / Mathf.PI));
                 line.SetActive(true);
             }
 

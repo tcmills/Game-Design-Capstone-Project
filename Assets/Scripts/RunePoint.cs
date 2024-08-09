@@ -20,10 +20,23 @@ public class RunePoint : MonoBehaviour
 
         runePoint.onValueChanged.AddListener(delegate
         {
-            spellManager.Toggled(runePointId, runePoint.isOn);
-            runePoint.enabled = false;
+            if (runePoint.isOn == true)
+            {
+                spellManager.Toggled(runePointId, runePoint.isOn);
+                runePoint.enabled = false;
+            }
         });
 
+    }
+
+    public void ResetRunePoint()
+    {
+        if (runePoint != null)
+        {
+            runePoint.enabled = true;
+            runePoint.isOn = false;
+            line.SetActive(false);
+        }
     }
 
 
