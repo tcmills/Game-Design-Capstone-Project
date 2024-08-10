@@ -15,7 +15,7 @@ public class RunePoint : MonoBehaviour
     void Start()
     {
 
-        spellManager = this.transform.parent.parent.gameObject.GetComponent<SpellManager>();
+        spellManager = transform.parent.parent.gameObject.GetComponent<SpellManager>();
         runePoint = GetComponent<Toggle>();
 
         runePoint.onValueChanged.AddListener(delegate

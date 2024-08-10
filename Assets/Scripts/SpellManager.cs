@@ -32,14 +32,14 @@ public class SpellManager : MonoBehaviour
     void Start()
     {
 
-        runePoint0 = this.transform.GetChild(1).GetChild(0).gameObject;
-        runePoint1 = this.transform.GetChild(1).GetChild(1).gameObject;
-        runePoint2 = this.transform.GetChild(1).GetChild(2).gameObject;
-        runePoint3 = this.transform.GetChild(1).GetChild(3).gameObject;
-        runePoint4 = this.transform.GetChild(1).GetChild(4).gameObject;
-        runePoint5 = this.transform.GetChild(1).GetChild(5).gameObject;
-        runePoint6 = this.transform.GetChild(1).GetChild(6).gameObject;
-        runePoint7 = this.transform.GetChild(1).GetChild(7).gameObject;
+        runePoint0 = transform.GetChild(1).GetChild(0).gameObject;
+        runePoint1 = transform.GetChild(1).GetChild(1).gameObject;
+        runePoint2 = transform.GetChild(1).GetChild(2).gameObject;
+        runePoint3 = transform.GetChild(1).GetChild(3).gameObject;
+        runePoint4 = transform.GetChild(1).GetChild(4).gameObject;
+        runePoint5 = transform.GetChild(1).GetChild(5).gameObject;
+        runePoint6 = transform.GetChild(1).GetChild(6).gameObject;
+        runePoint7 = transform.GetChild(1).GetChild(7).gameObject;
 
         runePoint0Script = runePoint0.GetComponent<RunePoint>();
         runePoint1Script = runePoint1.GetComponent<RunePoint>();
