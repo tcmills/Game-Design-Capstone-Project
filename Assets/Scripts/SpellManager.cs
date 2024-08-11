@@ -176,4 +176,64 @@ public class SpellManager : MonoBehaviour
 
         }
     }
+
+    public void changeSpellType(string type)
+    {
+        if (type == "fire")
+        {
+            runePoint0Script.changeColor("red");
+            runePoint1Script.changeColor("red");
+            runePoint2Script.changeColor("red");
+            runePoint3Script.changeColor("red");
+            runePoint4Script.changeColor("red");
+            runePoint5Script.changeColor("red");
+            runePoint6Script.changeColor("red");
+            runePoint7Script.changeColor("red");
+
+        } else if (type == "water")
+        {
+            runePoint0Script.changeColor("blue");
+            runePoint1Script.changeColor("blue");
+            runePoint2Script.changeColor("blue");
+            runePoint3Script.changeColor("blue");
+            runePoint4Script.changeColor("blue");
+            runePoint5Script.changeColor("blue");
+            runePoint6Script.changeColor("blue");
+            runePoint7Script.changeColor("blue");
+
+        } else if (type == "nature")
+        {
+            runePoint0Script.changeColor("green");
+            runePoint1Script.changeColor("green");
+            runePoint2Script.changeColor("green");
+            runePoint3Script.changeColor("green");
+            runePoint4Script.changeColor("green");
+            runePoint5Script.changeColor("green");
+            runePoint6Script.changeColor("green");
+            runePoint7Script.changeColor("green");
+
+        } else if (type == "air")
+        {
+            runePoint0Script.changeColor("pink");
+            runePoint1Script.changeColor("pink");
+            runePoint2Script.changeColor("pink");
+            runePoint3Script.changeColor("pink");
+            runePoint4Script.changeColor("pink");
+            runePoint5Script.changeColor("pink");
+            runePoint6Script.changeColor("pink");
+            runePoint7Script.changeColor("pink");
+
+        } else
+        {
+            runePoint0Script.changeColor("");
+            runePoint1Script.changeColor("");
+            runePoint2Script.changeColor("");
+            runePoint3Script.changeColor("");
+            runePoint4Script.changeColor("");
+            runePoint5Script.changeColor("");
+            runePoint6Script.changeColor("");
+            runePoint7Script.changeColor("");
+        }
+    }
+
 }
