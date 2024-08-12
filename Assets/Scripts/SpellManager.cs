@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class SpellManager : MonoBehaviour
 {
@@ -24,9 +25,14 @@ public class SpellManager : MonoBehaviour
     private RunePoint runePoint6Script;
     private RunePoint runePoint7Script;
 
-    private bool[] runePointValues = { false, false, false, false, false, false, false, false };
     private int[] runePointOrder = { 0, 0, 0, 0, 0, 0, 0, 0 };
     private int order = 0;
+    private string type = "default";
+
+    private string answerType;
+    private int[][] answerOrder;
+
+    public GameObject orderPromptUI;
 
     // Start is called before the first frame update
     void Start()
@@ -52,19 +58,70 @@ public class SpellManager : MonoBehaviour
 
     }
 
-    public void ClearSpell()
+    public void SetAnswer(string AType, int[][] AOrder)
     {
-        for (int k = 0; k < runePointValues.Length; k++)
+        answerType = AType;
+        //Debug.Log("" + AType);
+
+        answerOrder = AOrder;
+        //Debug.Log("# of Orders: " + AOrder.Length);
+
+        /*
+        for (int i = 0; i < AOrder.Length; i++)
         {
-            runePointValues[k] = false;
+            Debug.Log("8 = " + AOrder[i].Length);
+            for (int j = 0; j < AOrder[i].Length; j++)
+            {
+                Debug.Log("" + AOrder[i][j]);
+            }
+            Debug.Log(",");
+        }
+        */
+    }
+    
+    public void CheckAnswer()
+    {
+        bool check = false;
+
+        //Debug.Log("" + type);
+        //Debug.Log("" + answerType);
+        //Debug.Log("" + runePointOrder[0] + runePointOrder[1] + runePointOrder[2] + runePointOrder[3] + runePointOrder[4] + runePointOrder[5] + runePointOrder[6] + runePointOrder[7]);
+
+        if (type == answerType)
+        {
+            for (int i = 0; i < answerOrder.Length; i++)
+            {
+
+                //Debug.Log("" + answerOrder[i][0] + answerOrder[i][1] + answerOrder[i][2] + answerOrder[i][3] + answerOrder[i][4] + answerOrder[i][5] + answerOrder[i][6] + answerOrder[i][7]);
+
+                if (Enumerable.SequenceEqual(runePointOrder, answerOrder[i]))
+                {
+                    check = true;
+                    break;
+                }
+            }
+
         }
 
+        if (orderPromptUI != null)
+        {
+            orderPromptUI.SetActive(false);
+        }
+
+        Debug.Log("" + check);
+
+    }
+
+    public void ClearSpell()
+    {
         for (int l = 0; l < runePointOrder.Length; l++)
         {
             runePointOrder[l] = 0;
         }
         
         order = 0;
+
+        type = "default";
 
         runePoint0Script.ResetRunePoint();
         runePoint1Script.ResetRunePoint();
@@ -82,7 +139,6 @@ public class SpellManager : MonoBehaviour
 
     public void Toggled(int id, bool value)
     {
-        runePointValues[id] = value;
         order++;
         runePointOrder[id] = order;
 
@@ -177,10 +233,11 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    public void changeSpellType(string type)
+    public void changeSpellType(string spellType)
     {
-        if (type == "fire")
+        if (spellType == "fire")
         {
+            type = "fire";
             runePoint0Script.changeColor("red");
             runePoint1Script.changeColor("red");
             runePoint2Script.changeColor("red");
@@ -190,8 +247,9 @@ public class SpellManager : MonoBehaviour
             runePoint6Script.changeColor("red");
             runePoint7Script.changeColor("red");
 
-        } else if (type == "water")
+        } else if (spellType == "water")
         {
+            type = "water";
             runePoint0Script.changeColor("blue");
             runePoint1Script.changeColor("blue");
             runePoint2Script.changeColor("blue");
@@ -201,8 +259,9 @@ public class SpellManager : MonoBehaviour
             runePoint6Script.changeColor("blue");
             runePoint7Script.changeColor("blue");
 
-        } else if (type == "nature")
+        } else if (spellType == "nature")
         {
+            type = "nature";
             runePoint0Script.changeColor("green");
             runePoint1Script.changeColor("green");
             runePoint2Script.changeColor("green");
@@ -212,8 +271,9 @@ public class SpellManager : MonoBehaviour
             runePoint6Script.changeColor("green");
             runePoint7Script.changeColor("green");
 
-        } else if (type == "air")
+        } else if (spellType == "air")
         {
+            type = "air";
             runePoint0Script.changeColor("pink");
             runePoint1Script.changeColor("pink");
             runePoint2Script.changeColor("pink");
