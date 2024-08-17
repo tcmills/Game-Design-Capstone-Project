@@ -23,9 +23,4 @@ public class OrderGenerator : MonoBehaviour
         return orders[index];
     }
 
-    public OrderGenerator()
-    {
-
-    }
-
 }

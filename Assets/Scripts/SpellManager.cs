@@ -33,6 +33,7 @@ public class SpellManager : MonoBehaviour
     private int[][] answerOrder;
 
     public GameObject orderPromptUI;
+    public MoneyTracker tracker;
 
     // Start is called before the first frame update
     void Start()
@@ -97,11 +98,23 @@ public class SpellManager : MonoBehaviour
                 if (Enumerable.SequenceEqual(runePointOrder, answerOrder[i]))
                 {
                     check = true;
+          
                     break;
                 }
             }
 
         }
+
+        if (check)
+        {
+            tracker.AddMoney(100);
+        }
+        else
+        {
+            tracker.AddMoney(50);
+        }
+
+        ClearSpell();
 
         if (orderPromptUI != null)
         {
