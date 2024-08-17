@@ -11,8 +11,8 @@ public class OrderGenerator : MonoBehaviour
     public void Start()
     {
         order.SetOrderText("Want <color=red>red</color> rune shaped like a 'V'");
-        order.SetOrderType("fire");
-        int[][] runeOrder0 = { new int[8] { 0, 0, 0, 2, 3, 0, 1, 0 }, new int[8] { 0, 0, 0, 2, 1, 0, 3, 0 } };
+        order.SetOrderType(new string[1] { "fire" });
+        int[][][] runeOrder0 = { new int[2][] { new int[8] { 0, 0, 0, 2, 3, 0, 1, 0 }, new int[8] { 0, 0, 0, 2, 1, 0, 3, 0 } } };
         order.SetOrderRuneOrder(runeOrder0);
 
         orders[0] = order;

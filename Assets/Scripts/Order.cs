@@ -6,8 +6,8 @@ public class Order
 {
 
     public string text;
-    public string type;
-    public int[][] runeOrder;
+    public string[] type;
+    public int[][][] runeOrder;
 
     public Order()
     {
@@ -24,24 +24,24 @@ public class Order
         return text == null ? "" : text;
     }
 
-    public void SetOrderType(string orderType)
+    public void SetOrderType(string[] orderType)
     {
         type = orderType;
     }
 
-    public string GetOrderType()
+    public string[] GetOrderType()
     {
-        return type == null ? "" : type;
+        return type == null ? new string[1] : type;
     }
 
-    public void SetOrderRuneOrder(int[][] orderRuneOrder)
+    public void SetOrderRuneOrder(int[][][] orderRuneOrder)
     {
         runeOrder = orderRuneOrder;
     }
 
-    public int[][] GetOrderRuneOrder()
+    public int[][][] GetOrderRuneOrder()
     {
-        return runeOrder == null ? new int[1][] : runeOrder;
+        return runeOrder == null ? new int[1][][] : runeOrder;
     }
 
 }

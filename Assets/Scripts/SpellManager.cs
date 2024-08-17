@@ -29,8 +29,8 @@ public class SpellManager : MonoBehaviour
     private int order = 0;
     private string type = "default";
 
-    private string answerType;
-    private int[][] answerOrder;
+    private string[] answerType;
+    private int[][][] answerOrder;
 
     public GameObject orderPromptUI;
     public MoneyTracker tracker;
@@ -59,7 +59,7 @@ public class SpellManager : MonoBehaviour
 
     }
 
-    public void SetAnswer(string AType, int[][] AOrder)
+    public void SetAnswer(string[] AType, int[][][] AOrder)
     {
         answerType = AType;
         //Debug.Log("" + AType);
@@ -88,21 +88,24 @@ public class SpellManager : MonoBehaviour
         //Debug.Log("" + answerType);
         //Debug.Log("" + runePointOrder[0] + runePointOrder[1] + runePointOrder[2] + runePointOrder[3] + runePointOrder[4] + runePointOrder[5] + runePointOrder[6] + runePointOrder[7]);
 
-        if (type == answerType)
+        for (int i = 0; i < answerType.Length; i++)
         {
-            for (int i = 0; i < answerOrder.Length; i++)
+            if (type == answerType[i])
             {
-
-                //Debug.Log("" + answerOrder[i][0] + answerOrder[i][1] + answerOrder[i][2] + answerOrder[i][3] + answerOrder[i][4] + answerOrder[i][5] + answerOrder[i][6] + answerOrder[i][7]);
-
-                if (Enumerable.SequenceEqual(runePointOrder, answerOrder[i]))
+                for (int j = 0; j < answerOrder[i].Length; j++)
                 {
-                    check = true;
-          
-                    break;
-                }
-            }
 
+                    //Debug.Log("" + answerOrder[i][0] + answerOrder[i][1] + answerOrder[i][2] + answerOrder[i][3] + answerOrder[i][4] + answerOrder[i][5] + answerOrder[i][6] + answerOrder[i][7]);
+
+                    if (Enumerable.SequenceEqual(runePointOrder, answerOrder[i][j]))
+                    {
+                        check = true;
+
+                        break;
+                    }
+                }
+
+            }
         }
 
         if (check)
