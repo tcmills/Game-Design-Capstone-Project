@@ -17,14 +17,14 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler
     {
         if (orderPromptUI != null && spellManager != null && orderGenerator != null)
         {
-            order = orderGenerator.GetOrder(0);
+            order = orderGenerator.GetOrder();
 
             //Debug.Log("" + order.GetOrderText());
             //Debug.Log("" + order.GetOrderType());
             //Debug.Log("" + order.GetOrderRuneOrder());
 
-            text.text = order.GetOrderText();
-            spellManager.SetAnswer(order.GetOrderType(), order.GetOrderRuneOrder());
+            text.text = order.text;
+            spellManager.SetAnswer(order);
             orderPromptUI.SetActive(true);
         }
     }

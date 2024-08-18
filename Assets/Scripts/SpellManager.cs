@@ -29,8 +29,7 @@ public class SpellManager : MonoBehaviour
     private int order = 0;
     private string type = "default";
 
-    private string[] answerType;
-    private int[][][] answerOrder;
+    private Order answerOrder;
 
     public GameObject orderPromptUI;
     public MoneyTracker tracker;
@@ -59,56 +58,17 @@ public class SpellManager : MonoBehaviour
 
     }
 
-    public void SetAnswer(string[] AType, int[][][] AOrder)
+    public void SetAnswer(Order AOrder)
     {
-        answerType = AType;
-        //Debug.Log("" + AType);
-
         answerOrder = AOrder;
-        //Debug.Log("# of Orders: " + AOrder.Length);
-
-        /*
-        for (int i = 0; i < AOrder.Length; i++)
-        {
-            Debug.Log("8 = " + AOrder[i].Length);
-            for (int j = 0; j < AOrder[i].Length; j++)
-            {
-                Debug.Log("" + AOrder[i][j]);
-            }
-            Debug.Log(",");
-        }
-        */
     }
     
     public void CheckAnswer()
     {
-        bool check = false;
 
-        //Debug.Log("" + type);
-        //Debug.Log("" + answerType);
-        //Debug.Log("" + runePointOrder[0] + runePointOrder[1] + runePointOrder[2] + runePointOrder[3] + runePointOrder[4] + runePointOrder[5] + runePointOrder[6] + runePointOrder[7]);
+        Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
-        for (int i = 0; i < answerType.Length; i++)
-        {
-            if (type == answerType[i])
-            {
-                for (int j = 0; j < answerOrder[i].Length; j++)
-                {
-
-                    //Debug.Log("" + answerOrder[i][0] + answerOrder[i][1] + answerOrder[i][2] + answerOrder[i][3] + answerOrder[i][4] + answerOrder[i][5] + answerOrder[i][6] + answerOrder[i][7]);
-
-                    if (Enumerable.SequenceEqual(runePointOrder, answerOrder[i][j]))
-                    {
-                        check = true;
-
-                        break;
-                    }
-                }
-
-            }
-        }
-
-        if (check)
+        if (input.Equals(answerOrder))
         {
             tracker.AddMoney(100);
         }
@@ -123,8 +83,6 @@ public class SpellManager : MonoBehaviour
         {
             orderPromptUI.SetActive(false);
         }
-
-        Debug.Log("" + check);
 
     }
 
