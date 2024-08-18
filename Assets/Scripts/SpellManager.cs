@@ -31,6 +31,8 @@ public class SpellManager : MonoBehaviour
 
     private Order answerOrder;
 
+    public bool canSubmit = false;
+
     public GameObject orderPromptUI;
     public MoneyTracker tracker;
 
@@ -66,22 +68,27 @@ public class SpellManager : MonoBehaviour
     public void CheckAnswer()
     {
 
-        Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
-
-        if (input.Equals(answerOrder))
+        if (canSubmit)
         {
-            tracker.AddMoney(100);
-        }
-        else
-        {
-            tracker.AddMoney(50);
-        }
+            Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
-        ClearSpell();
+            if (input.Equals(answerOrder))
+            {
+                tracker.AddMoney(100);
+            }
+            else
+            {
+                tracker.AddMoney(50);
+            }
 
-        if (orderPromptUI != null)
-        {
-            orderPromptUI.SetActive(false);
+            ClearSpell();
+
+            if (orderPromptUI != null)
+            {
+                orderPromptUI.SetActive(false);
+            }
+
+            canSubmit = false;
         }
 
     }

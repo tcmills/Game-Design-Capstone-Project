@@ -25,6 +25,7 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler
 
             text.text = order.text;
             spellManager.SetAnswer(order);
+            spellManager.canSubmit = true;
             orderPromptUI.SetActive(true);
         }
     }

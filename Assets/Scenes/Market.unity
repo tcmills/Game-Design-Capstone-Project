@@ -6746,6 +6746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d05a8c5e4521814e8f1f287be0c2019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSubmit: 0
   orderPromptUI: {fileID: 1745660518}
   tracker: {fileID: 510012801}
 --- !u!1001 &555351066
