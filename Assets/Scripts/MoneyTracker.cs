@@ -32,4 +32,9 @@ public class MoneyTracker : MonoBehaviour
     {
         text.text = "" + set;
     }
+
+    public string GetMoney()
+    {
+        return text.text;
+    }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SpellManager : MonoBehaviour
 {
@@ -35,6 +37,10 @@ public class SpellManager : MonoBehaviour
 
     public GameObject orderPromptUI;
     public MoneyTracker tracker;
+    public OrderGenerator orderGenerator;
+    public GameObject gameOverMenu;
+    public GameObject gameOverText;
+    public GameObject finalScoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +64,32 @@ public class SpellManager : MonoBehaviour
         runePoint6Script = runePoint6.GetComponent<RunePoint>();
         runePoint7Script = runePoint7.GetComponent<RunePoint>();
 
+    }
+
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene("Market");
+    }
+
+    private void EndGame(int numberOfOrders)
+    {
+        if (orderGenerator.GetOrderStartingSize() - orderGenerator.GetOrderSize() >= numberOfOrders)
+        {
+            var quota = (numberOfOrders - 1) * 100;
+
+            if (int.Parse(tracker.GetMoney()) >= quota)
+            {
+                gameOverText.GetComponent<TMP_Text>().text = "You Win";
+            }
+            else
+            {
+                gameOverText.GetComponent<TMP_Text>().text = "You Lose";
+            }
+
+            finalScoreText.GetComponent<TMP_Text>().text += tracker.GetMoney();
+            gameOverMenu.SetActive(true);
+        }
     }
 
     public void SetAnswer(Order AOrder)
@@ -89,6 +121,9 @@ public class SpellManager : MonoBehaviour
             }
 
             canSubmit = false;
+
+            EndGame(10);
+
         }
 
     }
