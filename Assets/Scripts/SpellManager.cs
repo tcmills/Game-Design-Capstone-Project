@@ -41,6 +41,7 @@ public class SpellManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject gameOverText;
     public GameObject finalScoreText;
+    public PauseManager pauseManager;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,14 @@ public class SpellManager : MonoBehaviour
         runePoint6Script = runePoint6.GetComponent<RunePoint>();
         runePoint7Script = runePoint7.GetComponent<RunePoint>();
 
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown("escape"))// && SceneManager.GetActiveScene().ToString() == "Market")
+        {
+            pauseManager.TogglePause();
+        }
     }
 
 
