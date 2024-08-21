@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+
     public void LoadLevel()
     {
         SceneManager.LoadScene("Market");
@@ -12,6 +13,11 @@ public class StartGame : MonoBehaviour
 
     public void LoadTitle()
     {
+        if (PauseManager.IsPaused)
+        {
+            PauseManager.IsPaused = false;
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene("Title");
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
 
-    public static bool IsPaused { get; private set; } = false;
+    public static bool IsPaused { get; set; } = false;
 
     public void TogglePause()
     {

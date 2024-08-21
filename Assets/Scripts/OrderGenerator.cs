@@ -15,7 +15,7 @@ public class OrderGenerator : MonoBehaviour
         orders.Add(new Order() { 
             text = "Levitate", 
             type = new string[2] { "default", "air" }, 
-            runeOrder = new int[2][][] { new int[2][] { new int[8] { 6, 1, 0, 0 , 4, 5, 3, 2 }, new int[8] { 1, 6, 0, 0, 3, 2, 4, 5 } }, new int[2][] { new int[8] { 6, 1, 0, 0, 4, 5, 3, 2 }, new int[8] { 1, 6, 0, 0, 3, 2, 4, 5 } } } 
+            runeOrder = new int[2][][] { new int[2][] { new int[8] { 6, 1, 0, 0 , 4, 5, 3, 2 }, new int[8] { 1, 6, 0, 0, 3, 2, 4, 5 } }, new int[2][] { new int[8] { 6, 5, 0, 0, 2, 4, 1, 3 }, new int[8] { 1, 2, 0, 0, 5, 3, 6, 4 } } } 
         });
 
         //Order 1: Arcane/MagicMissile
@@ -103,7 +103,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Lightning",
             type = new string[2] { "fire", "nature" },
-            runeOrder = new int[2][][] { new int[2][] { new int[8] { 3, 2, 4, 1, 0, 0, 0, 0 }, new int[8] { 2, 3, 1, 4, 0, 0, 0, 0 } }, new int[2][] { new int[8] { 3, 2, 4, 1, 0, 0, 0, 0 }, new int[8] { 2, 3, 1, 4, 0, 0, 0, 0 } } }
+            runeOrder = new int[2][][] { new int[2][] { new int[8] { 3, 2, 1, 4, 0, 0, 0, 0 }, new int[8] { 2, 3, 4, 1, 0, 0, 0, 0 } }, new int[2][] { new int[8] { 3, 4, 2, 6, 0, 7, 5, 1 }, new int[8] { 5, 4, 6, 2, 0, 1, 3, 7 } } }
         });
 
         //Order 12: Fire/Warm
@@ -191,7 +191,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Rain",
             type = new string[2] { "water", "nature" },
-            runeOrder = new int[2][][] { new int[2][] { new int[8] { 5, 2, 7, 8, 6, 4, 1, 3 }, new int[8] { 4, 7, 2, 1, 3, 5, 8, 6 } }, new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[2][][] { new int[2][] { new int[8] { 5, 2, 7, 8, 6, 4, 1, 3 }, new int[8] { 4, 7, 2, 1, 3, 5, 8, 6 } }, new int[2][] { new int[8] { 0, 0, 3, 0, 2, 5, 4, 1 }, new int[8] { 0, 0, 3, 0, 4, 1, 2, 5 } } }
         });
 
         //Order 23: Nature/Grow
@@ -199,7 +199,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Grow",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 2, 1, 4, 5, 3, 0 }, new int[8] { 0, 0, 4, 5, 2, 1, 3, 0 } } }
         });
 
         //Order 24: Nature/Entangle
@@ -207,7 +207,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Entangle",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 5, 0, 4, 2, 1, 3 }, new int[8] { 0, 0, 1, 0, 2, 4, 5, 3 } } }
         });
 
         //Order 25: Nature/Speak with Nature
@@ -215,7 +215,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Speak with Nature",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 3, 2, 5, 4, 1 }, new int[8] { 0, 0, 0, 3, 4, 1, 2, 5 } } }
         });
 
         //Order 26: Nature/Heal
@@ -223,7 +223,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Heal",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 2, 6, 4, 0, 5, 7, 3, 1 }, new int[8] { 6, 2, 4, 0, 3, 1, 5, 7 } } }
         });
 
         //Order 27: Nature/Move Stone
@@ -231,7 +231,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Move Stone",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 6, 1, 0, 0, 3, 2, 4, 5 }, new int[8] { 1, 6, 0, 0, 4, 5, 3, 2 } } }
         });
 
         //Order 28: Nature/Earthquake
@@ -239,7 +239,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Earthquake",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 5, 4, 1, 8, 3, 7, 2, 6 }, new int[8] { 4, 5, 8, 1, 6, 2, 7, 3 } } }
         });
 
         //Order 29: Nature/Summon Treant
@@ -247,7 +247,63 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Summon Treant",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 }, new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 2, 6, 4, 0, 7, 5, 1, 3 }, new int[8] { 6, 2, 4, 0, 1, 3, 7, 5 } } }
+        });
+
+        //Order 30: Air/Tornado
+        orders.Add(new Order()
+        {
+            text = "Tornado",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 5, 3, 0, 4, 6, 7, 2, 1 }, new int[8] { 3, 5, 0, 4, 2, 1, 6, 7 } } }
+        });
+
+        //Order 31: Air/Fly
+        orders.Add(new Order()
+        {
+            text = "Fly",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 6, 5, 2, 1, 4, 0, 3, 0 }, new int[8] { 1, 2, 5, 6, 3, 0, 4, 0 } } }
+        });
+
+        //Order 32: Air/Wind Scythe
+        orders.Add(new Order()
+        {
+            text = "Wind Scythe",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 6, 1, 3, 2, 5, 7, 4, 8 }, new int[8] { 3, 8, 6, 7, 4, 2, 5, 1 } } }
+        });
+
+        //Order 33: Air/Gust Minor
+        orders.Add(new Order()
+        {
+            text = "Gust Minor",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 3, 0, 2, 4, 0, 0, 1, 5 }, new int[8] { 3, 0, 4, 2, 0, 0, 5, 1 } } }
+        });
+
+        //Order 34: Air/Gust Major
+        orders.Add(new Order()
+        {
+            text = "Gust Major",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 4, 0, 3, 5, 2, 6, 1, 7 }, new int[8] { 4, 0, 5, 3, 6, 2, 7, 1 } } }
+        });
+
+        //Order 35: Air/Stealth Walk
+        orders.Add(new Order()
+        {
+            text = "Stealth Walk",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 4, 3, 0, 0, 0, 2, 0, 1 }, new int[8] { 1, 2, 0, 0, 0, 3, 0, 4 } } }
+        });
+
+        //Order 36: Air/Slow Fall
+        orders.Add(new Order()
+        {
+            text = "Slow Fall",
+            type = new string[1] { "air" },
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 6, 5, 1, 2, 0, 4, 0, 3 }, new int[8] { 1, 2, 6, 5, 0, 3, 0, 4 } } }
         });
 
         startingSize = orders.Count;

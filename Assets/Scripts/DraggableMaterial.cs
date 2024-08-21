@@ -10,6 +10,8 @@ public class DraggableMaterial : MonoBehaviour, IDragHandler, IEndDragHandler
     public SpellManager spellManager;
     RectTransform rectTransform;
     Vector3 originalPos;
+    private bool wasPaused = false;
+    private PointerEventData currentPointerEventData;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +20,32 @@ public class DraggableMaterial : MonoBehaviour, IDragHandler, IEndDragHandler
         originalPos = rectTransform.position;
     }
 
+    void Update()
+    {
+        if (PauseManager.IsPaused)
+        {
+            wasPaused = true;
+        }
+        else if (wasPaused == true)
+        {
+            wasPaused = false;
+            if (currentPointerEventData != null)
+            {
+                currentPointerEventData.pointerDrag = null;
+            }
+            rectTransform.position = originalPos;
+        }
+
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
 
         Vector3 globalMousePos;
-        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos))
+        if (!PauseManager.IsPaused && RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos))
         {
             rectTransform.position = globalMousePos;
+            currentPointerEventData = eventData;
         }
 
     }
@@ -33,7 +54,7 @@ public class DraggableMaterial : MonoBehaviour, IDragHandler, IEndDragHandler
     {
 
         Vector3 globalMousePos;
-        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos))
+        if (!PauseManager.IsPaused && RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos))
         {
             
             if (globalMousePos.x > -59.35 && globalMousePos.x < -54.85 && globalMousePos.y > -4.3 && globalMousePos.y < -1.2)
@@ -68,5 +89,4 @@ public class DraggableMaterial : MonoBehaviour, IDragHandler, IEndDragHandler
 
         }
     }
-
 }
