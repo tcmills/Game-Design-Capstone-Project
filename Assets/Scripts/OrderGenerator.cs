@@ -58,10 +58,10 @@ public class OrderGenerator : MonoBehaviour
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 1, 2, 5, 6, 4, 3 }, new int[8] { 0, 0, 6, 5, 2, 1, 3, 4 } } }
         });
 
-        //Order 6: Arcane/Armor
+        //Order 6: Arcane/MagicArmor
         orders.Add(new Order()
         {
-            text = "Armor",
+            text = "Magic Armor",
             type = new string[1] { "default" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 3, 5, 4, 6, 0, 2, 1, 0 }, new int[8] { 4, 2, 3, 1, 0, 5, 6, 0 } } }
         });
@@ -223,7 +223,7 @@ public class OrderGenerator : MonoBehaviour
         {
             text = "Heal",
             type = new string[1] { "nature" },
-            runeOrder = new int[1][][] { new int[2][] { new int[8] { 2, 6, 4, 0, 5, 7, 3, 1 }, new int[8] { 6, 2, 4, 0, 3, 1, 5, 7 } } }
+            runeOrder = new int[1][][] { new int[2][] { new int[8] { 3, 5, 0, 4, 2, 7, 6, 1 }, new int[8] { 5, 3, 0, 4, 6, 1, 2, 7 } } }
         });
 
         //Order 27: Nature/Move Stone
