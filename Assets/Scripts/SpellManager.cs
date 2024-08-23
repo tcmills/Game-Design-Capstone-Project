@@ -30,10 +30,13 @@ public class SpellManager : MonoBehaviour
     private int[] runePointOrder = { 0, 0, 0, 0, 0, 0, 0, 0 };
     private int order = 0;
     private string type = "default";
+    private int quota = 1000;
 
     private Order answerOrder;
 
     public bool canSubmit = false;
+    private int timeLimit = 180;
+    private bool gameRunning = true;
 
     public GameObject orderPromptUI;
     public MoneyTracker tracker;
@@ -42,6 +45,12 @@ public class SpellManager : MonoBehaviour
     public GameObject gameOverText;
     public GameObject finalScoreText;
     public PauseManager pauseManager;
+    public GameObject quotaUI;
+    public GameObject sun;
+
+    private AudioSource audioSource;
+    public AudioClip correct;
+    public AudioClip incorrect;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +74,12 @@ public class SpellManager : MonoBehaviour
         runePoint6Script = runePoint6.GetComponent<RunePoint>();
         runePoint7Script = runePoint7.GetComponent<RunePoint>();
 
+        audioSource = GetComponent<AudioSource>();
+        quotaUI.GetComponent<TMP_Text>().text += "" + quota;
+
+        StartCoroutine(TimeLimit());
+        StartCoroutine(SunMove());
+
     }
 
     public void Update()
@@ -81,24 +96,22 @@ public class SpellManager : MonoBehaviour
         SceneManager.LoadScene("Market");
     }
 
-    private void EndGame(int numberOfOrders)
+    private void EndGame()
     {
-        if (orderGenerator.GetOrderStartingSize() - orderGenerator.GetOrderSize() >= numberOfOrders)
+        
+
+        if (int.Parse(tracker.GetMoney()) >= quota)
         {
-            var quota = (numberOfOrders - 1) * 100;
-
-            if (int.Parse(tracker.GetMoney()) >= quota)
-            {
-                gameOverText.GetComponent<TMP_Text>().text = "You Win";
-            }
-            else
-            {
-                gameOverText.GetComponent<TMP_Text>().text = "You Lose";
-            }
-
-            finalScoreText.GetComponent<TMP_Text>().text += tracker.GetMoney();
-            gameOverMenu.SetActive(true);
+            gameOverText.GetComponent<TMP_Text>().text = "You Win";
         }
+        else
+        {
+            gameOverText.GetComponent<TMP_Text>().text = "You Lose";
+        }
+
+        finalScoreText.GetComponent<TMP_Text>().text += tracker.GetMoney();
+        gameOverMenu.SetActive(true);
+        gameRunning = false;
     }
 
     public void SetAnswer(Order AOrder)
@@ -109,17 +122,19 @@ public class SpellManager : MonoBehaviour
     public void CheckAnswer()
     {
 
-        if (canSubmit)
+        if (canSubmit && order != 0)
         {
             Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
             if (input.Equals(answerOrder))
             {
+                audioSource.PlayOneShot(correct);
                 tracker.AddMoney(100);
             }
             else
             {
-                tracker.AddMoney(50);
+                audioSource.PlayOneShot(incorrect);
+                tracker.SubMoney(50);
             }
 
             ClearSpell();
@@ -131,10 +146,34 @@ public class SpellManager : MonoBehaviour
 
             canSubmit = false;
 
-            EndGame(10);
-
         }
 
+        if (orderGenerator.GetOrderSize() == 0 || int.Parse(tracker.GetMoney()) >= quota)
+        {
+            EndGame();
+        }
+
+    }
+
+    IEnumerator TimeLimit()
+    {
+        yield return new WaitForSeconds(timeLimit);
+        EndGame();
+    }
+
+    IEnumerator SunMove()
+    {
+        while (gameRunning)
+        {
+            yield return new WaitForSeconds(1);
+            MoveSun();
+        }
+
+    }
+
+    private void MoveSun()
+    {
+        sun.transform.RotateAround(sun.transform.position, sun.transform.up, 1);
     }
 
     public void ClearSpell()

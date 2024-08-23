@@ -25,7 +25,14 @@ public class MoneyTracker : MonoBehaviour
     {
         var amount = int.Parse(text.text);
         amount -= sub;
-        text.text = "" + amount;
+        if (amount < 0)
+        {
+            text.text = "0";
+        }
+        else
+        {
+            text.text = "" + amount;
+        }
     }
 
     public void SetMoney(int set)

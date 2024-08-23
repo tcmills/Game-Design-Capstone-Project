@@ -7,19 +7,24 @@ public class OrderGenerator : MonoBehaviour
 
     //Order[] orders = new Order[1];
     private List<Order> orders = new List<Order>();
+    private List<Order> arcaneOrders = new List<Order>();
+    private List<Order> notArcaneOrders = new List<Order>();
+    //private List<Order> fireOrders = new List<Order>();
+    //private List<Order> natureOrders = new List<Order>();
+    //private List<Order> airOrders = new List<Order>();
     private int startingSize;
 
     public void Start()
     {
         //Order 0: Arcane:Air/Levitate
-        orders.Add(new Order() { 
+        arcaneOrders.Add(new Order() { 
             text = "Levitate", 
             type = new string[2] { "default", "air" }, 
             runeOrder = new int[2][][] { new int[2][] { new int[8] { 6, 1, 0, 0 , 4, 5, 3, 2 }, new int[8] { 1, 6, 0, 0, 3, 2, 4, 5 } }, new int[2][] { new int[8] { 6, 5, 0, 0, 2, 4, 1, 3 }, new int[8] { 1, 2, 0, 0, 5, 3, 6, 4 } } } 
         });
 
         //Order 1: Arcane/MagicMissile
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Magic Missile",
             type = new string[1] { "default" },
@@ -27,7 +32,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 2: Arcane/Teleport
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Teleport",
             type = new string[1] { "default" },
@@ -35,7 +40,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 3: Arcane/Slow
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Slow",
             type = new string[1] { "default" },
@@ -43,7 +48,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 4: Arcane/Haste
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Haste",
             type = new string[1] { "default" },
@@ -51,7 +56,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 5: Arcane/Shield
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Shield",
             type = new string[1] { "default" },
@@ -59,7 +64,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 6: Arcane/MagicArmor
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Magic Armor",
             type = new string[1] { "default" },
@@ -67,7 +72,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 7: Arcane/Invisibility
-        orders.Add(new Order()
+        arcaneOrders.Add(new Order()
         {
             text = "Invisibility",
             type = new string[1] { "default" },
@@ -75,7 +80,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 8: Fire:Water/Boil/Steam
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Boil/Steam",
             type = new string[2] { "fire", "water" },
@@ -83,7 +88,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 9: Fire/Fire Stream
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Fire Stream",
             type = new string[1] { "fire" },
@@ -91,7 +96,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 10: Fire/Explosion
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Explosion",
             type = new string[1] { "fire" },
@@ -99,7 +104,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 11: Fire:Nature/Lightning
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Lightning",
             type = new string[2] { "fire", "nature" },
@@ -107,7 +112,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 12: Fire/Warm
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Warm",
             type = new string[1] { "fire" },
@@ -115,7 +120,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 13: Fire/Burn
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Burn",
             type = new string[1] { "fire" },
@@ -123,7 +128,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 14: Fire/Cook
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Cook",
             type = new string[1] { "fire" },
@@ -131,7 +136,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 15: Fire/Ignite
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Ignite",
             type = new string[1] { "fire" },
@@ -139,7 +144,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 16: Water/Drink
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Drink",
             type = new string[1] { "water" },
@@ -147,7 +152,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 17: Water/Create Water
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Create Water",
             type = new string[1] { "water" },
@@ -155,7 +160,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 18: Water/Freeze
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Freeze",
             type = new string[1] { "water" },
@@ -163,7 +168,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 19: Water/Waterfall
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Waterfall",
             type = new string[1] { "water" },
@@ -171,7 +176,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 20: Water/Water Breathing
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Waterbreathing",
             type = new string[1] { "water" },
@@ -179,7 +184,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 21: Water/Control Water
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Control Water",
             type = new string[1] { "water" },
@@ -187,7 +192,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 22: Water/Rain
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Rain",
             type = new string[2] { "water", "nature" },
@@ -195,7 +200,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 23: Nature/Grow
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Grow",
             type = new string[1] { "nature" },
@@ -203,7 +208,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 24: Nature/Entangle
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Entangle",
             type = new string[1] { "nature" },
@@ -211,7 +216,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 25: Nature/Speak with Nature
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Speak with Nature",
             type = new string[1] { "nature" },
@@ -219,7 +224,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 26: Nature/Heal
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Heal",
             type = new string[1] { "nature" },
@@ -227,7 +232,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 27: Nature/Move Stone
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Move Stone",
             type = new string[1] { "nature" },
@@ -235,7 +240,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 28: Nature/Earthquake
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Earthquake",
             type = new string[1] { "nature" },
@@ -243,7 +248,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 29: Nature/Summon Treant
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Summon Treant",
             type = new string[1] { "nature" },
@@ -251,7 +256,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 30: Air/Tornado
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Tornado",
             type = new string[1] { "air" },
@@ -259,7 +264,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 31: Air/Fly
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Fly",
             type = new string[1] { "air" },
@@ -267,7 +272,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 32: Air/Wind Scythe
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Wind Scythe",
             type = new string[1] { "air" },
@@ -275,7 +280,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 33: Air/Gust Minor
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Gust Minor",
             type = new string[1] { "air" },
@@ -283,7 +288,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 34: Air/Gust Major
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Gust Major",
             type = new string[1] { "air" },
@@ -291,7 +296,7 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 35: Air/Stealth Walk
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Stealth Walk",
             type = new string[1] { "air" },
@@ -299,12 +304,15 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 36: Air/Slow Fall
-        orders.Add(new Order()
+        notArcaneOrders.Add(new Order()
         {
             text = "Slow Fall",
             type = new string[1] { "air" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 6, 5, 1, 2, 0, 4, 0, 3 }, new int[8] { 1, 2, 6, 5, 0, 3, 0, 4 } } }
         });
+
+        orders.AddRange(arcaneOrders);
+        orders.AddRange(notArcaneOrders);
 
         startingSize = orders.Count;
 
@@ -316,6 +324,27 @@ public class OrderGenerator : MonoBehaviour
 
         var order = orders[index];
         orders.RemoveAt(index);
+
+        return order;
+    }
+
+    public Order GetArcaneOrder()
+    {
+        int index = Random.Range(0, arcaneOrders.Count);
+
+        var order = arcaneOrders[index];
+        arcaneOrders.RemoveAt(index);
+        orders.Remove(order);
+
+        return order;
+    }
+    public Order GetNotArcaneOrder()
+    {
+        int index = Random.Range(0, notArcaneOrders.Count);
+
+        var order = notArcaneOrders[index];
+        notArcaneOrders.RemoveAt(index);
+        orders.Remove(order);
 
         return order;
     }
