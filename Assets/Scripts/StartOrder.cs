@@ -51,6 +51,9 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler
             spellManager.SetAnswer(order);
             spellManager.canSubmit = true;
             orderPromptUI.SetActive(true);
+
+            StartCoroutine(spellManager.TimeLimit());
+            StartCoroutine(spellManager.SunMove());
         }
     }
 

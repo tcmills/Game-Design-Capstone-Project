@@ -47,6 +47,7 @@ public class SpellManager : MonoBehaviour
     public PauseManager pauseManager;
     public GameObject quotaUI;
     public GameObject sun;
+    public Slider timerUI;
 
     private AudioSource audioSource;
     public AudioClip correct;
@@ -76,9 +77,6 @@ public class SpellManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         quotaUI.GetComponent<TMP_Text>().text += "" + quota;
-
-        StartCoroutine(TimeLimit());
-        StartCoroutine(SunMove());
 
     }
 
@@ -155,13 +153,13 @@ public class SpellManager : MonoBehaviour
 
     }
 
-    IEnumerator TimeLimit()
+    public IEnumerator TimeLimit()
     {
         yield return new WaitForSeconds(timeLimit);
         EndGame();
     }
 
-    IEnumerator SunMove()
+    public IEnumerator SunMove()
     {
         while (gameRunning)
         {
@@ -174,6 +172,7 @@ public class SpellManager : MonoBehaviour
     private void MoveSun()
     {
         sun.transform.RotateAround(sun.transform.position, sun.transform.up, 1);
+        timerUI.value++;
     }
 
     public void ClearSpell()
