@@ -31,18 +31,46 @@ public class Order
         }
         else
         {
-            if (Equals(objAsOrder).Substring(0,1) == "t")
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Equals(objAsOrder);
         }
     }
 
-    public string Equals(Order other)
+    public bool Equals(Order other)
+    {
+        if (other == null)
+        {
+            return false;
+        }
+
+        if (other.runeOrder[0].Length == 1)
+        {
+            return Check(other, this);
+        }
+        else
+        {
+            return Check(this, other);
+        }
+    }
+
+    private bool Check(Order player, Order answer)
+    {
+        if (answer.type.Contains(player.type[0]))
+        {
+            var i = Array.IndexOf(answer.type, player.type[0]);
+            for (int j = 0; j < answer.runeOrder[i].Length; j++)
+            {
+                if (Enumerable.SequenceEqual(answer.runeOrder[i][j], player.runeOrder[0][0]))
+                {
+                    return true;
+                }
+            }
+
+        }
+
+        return false;
+    }
+
+    public string EqualsWhy(Order other)
     {
 
         if (other == null)
@@ -53,26 +81,30 @@ public class Order
         if (other.runeOrder[0].Length == 1)
         {
 
-            return Check(other, this);
+            return CheckWhy(other, this);
 
         }
         else
         {
 
-            return Check(this, other);
+            return CheckWhy(this, other);
 
         }
 
-        return "t";
     }
 
-    private string Check(Order player, Order answer)
+    private string CheckWhy(Order player, Order answer)
     {
-        int closestCorrectOrder = 0;
-        int closestCorrectPoints = 0;
-        int emptyPoints = 0;
+        int playerEmptyAmount = player.runeOrder[0][0].Count(s => s == 0);
+        int playerRPAmount = 8 - playerEmptyAmount;
+        
+        int closestRPAmount = 0;
+
+        int closestRPPlacement = 0;
+
+        int closestRPOrder = 8;
+
         bool extra = false;
-        emptyPoints = player.runeOrder[0][0].Count(s => s == 0);
 
         if (answer.type.Contains(player.type[0]))
         {
@@ -81,64 +113,108 @@ public class Order
 
             for (int j = 0; j < answer.runeOrder[i].Length; j++)
             {
-                //if (Enumerable.SequenceEqual(runeOrder[i][j], other.runeOrder[0][0]))
-                //{
-                //    return reason;
-                //}
 
-                var correctOrder = 0;
-                var correctEmptyPoints = 0;
+                string playerRPOrder = "";
+                int answerEmptyAmount = answer.runeOrder[i][j].Count(s => s == 0);
+                int answerRPAmount = 8 - answerEmptyAmount;
+                for (int l = 1; l <= answerRPAmount; l++)
+                {
+                    playerRPOrder += Array.IndexOf(player.runeOrder[0][0], l);
+                }
+
+                if (answerRPAmount - playerRPAmount > 0)
+                {
+                    closestRPAmount = Mathf.Abs(answerRPAmount - playerRPAmount);
+                    extra = false;
+                }
+                else
+                {
+                    closestRPAmount = Mathf.Abs(answerRPAmount - playerRPAmount);
+                    extra = true;
+                }
+
+
+
+                var checkRPPlacement = 0;
 
                 for (int k = 0; k < answer.runeOrder[i][j].Length; k++)
                 {
-
-                    if (answer.runeOrder[i][j][k] == 0)
+                    if ((answer.runeOrder[i][j][k] == 0 && player.runeOrder[0][0][k] != 0))
                     {
-                        correctEmptyPoints++;
-                    }
-
-                    if (answer.runeOrder[i][j][k] == player.runeOrder[0][0][k])
-                    {
-                        correctOrder++;
+                        checkRPPlacement++;
                     }
                 }
 
-                if (correctOrder == 8)
+                if (checkRPPlacement >= closestRPPlacement)
                 {
-                    return "t";
+                    closestRPPlacement = checkRPPlacement;
                 }
-                else if (correctOrder >= closestCorrectOrder)
+
+
+
+                var answerRPOrder = "";
+                var checkRPOrder = answerRPAmount-1;
+
+                for (int l = 1; l <= answerRPAmount; l++)
                 {
-                    closestCorrectOrder = correctOrder;
-                    if (correctEmptyPoints - emptyPoints > 0)
+                    answerRPOrder += Array.IndexOf(answer.runeOrder[i][j], l);
+                }
+
+                //Debug.Log(playerRPOrder + ", " + answerRPOrder);
+                //Debug.Log(playerRPOrder.Length + ", " + answerRPOrder.Length);
+                
+                if (playerRPOrder.Length == answerRPOrder.Length)
+                {
+                    for (int l = 0; l < answerRPAmount-1; l++)
                     {
-                        closestCorrectPoints = Mathf.Abs(correctEmptyPoints - emptyPoints);
-                        extra = true;
+                        //Debug.Log(playerRPOrder.Substring(l, 2) + ", " + answerRPOrder.Substring(l, 2));
+                        if (playerRPOrder.Substring(l, 2) == answerRPOrder.Substring(l, 2))
+                        {
+                            checkRPOrder--;
+                        }
+                    }
+                }
+
+                if (checkRPOrder <= closestRPOrder)
+                {
+                    closestRPOrder = checkRPOrder;
+                }
+
+
+                //Debug.Log(closestRPAmount + ", " + closestRPPlacement + ", " + closestRPOrder);
+                
+            }
+
+
+            if (closestRPAmount == 0)
+            {
+                if (closestRPPlacement == 0)
+                {
+                    if (closestRPOrder == 0)
+                    {
+                        return "t";
                     }
                     else
                     {
-                        closestCorrectPoints = Mathf.Abs(correctEmptyPoints - emptyPoints);
-                        extra = false;
+                        return "fIncorrect Rune Order: There are " + closestRPOrder + " rune lines in the wrong order.";
                     }
                 }
-            }
-
-            if (closestCorrectPoints == 0)
-            {
-                return "fIncorrect Order: " + (8 - closestCorrectOrder) + " rune points deviate from order.";
+                else
+                {
+                    return "fIncorrect Rune Placement: There are " + closestRPPlacement + " rune points in the wrong place.";
+                }
             }
             else
             {
                 if (extra)
                 {
-                    return "fIncorrect Rune Point: There are " + (closestCorrectPoints) + " extra rune points and " + (8 - closestCorrectOrder) + " rune points deviate from order.";
+                    return "fIncorrect Rune Amount: There are " + closestRPAmount + " extra rune points";
                 }
                 else
                 {
-                    return "fIncorrect Rune Point: There are " + (closestCorrectPoints) + " missing rune points and " + (8 - closestCorrectOrder - closestCorrectPoints) + " rune points deviate from order.";
+                    return "fIncorrect Rune Amount: There are " + closestRPAmount + " missing rune points";
                 }
             }
-
         }
         else
         {

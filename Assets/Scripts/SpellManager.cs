@@ -128,7 +128,7 @@ public class SpellManager : MonoBehaviour
         {
             Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
-            var answer = input.Equals(answerOrder);
+            var answer = input.EqualsWhy(answerOrder);
 
             if (answer.Substring(0,1) == "t")
             {
