@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,75 +31,124 @@ public class Order
         }
         else
         {
-            return Equals(objAsOrder);
+            if (Equals(objAsOrder).Substring(0,1) == "t")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 
-    public bool Equals(Order other)
+    public string Equals(Order other)
     {
+
         if (other == null)
         {
-            return false;
+            return "fOther does not exist.";
         }
 
         if (other.runeOrder[0].Length == 1)
         {
-            if (type.Contains(other.type[0]))
-            {
-                for (int i = 0; i < type.Length; i++)
-                {
-                    for (int j = 0; j < runeOrder[i].Length; j++)
-                    {
-                        if (Enumerable.SequenceEqual(runeOrder[i][j], other.runeOrder[0][0]))
-                        {
-                            return true;
-                        }
-                    }
-                }
 
-            }
+            return Check(other, this);
+
         }
         else
         {
-            if (other.type.Contains(type[0]))
+
+            return Check(this, other);
+
+        }
+
+        return "t";
+    }
+
+    private string Check(Order player, Order answer)
+    {
+        int closestCorrectOrder = 0;
+        int closestCorrectPoints = 0;
+        int emptyPoints = 0;
+        bool extra = false;
+        emptyPoints = player.runeOrder[0][0].Count(s => s == 0);
+
+        if (answer.type.Contains(player.type[0]))
+        {
+
+            var i = Array.IndexOf(answer.type, player.type[0]);
+
+            for (int j = 0; j < answer.runeOrder[i].Length; j++)
             {
-                for (int i = 0; i < other.type.Length; i++)
+                //if (Enumerable.SequenceEqual(runeOrder[i][j], other.runeOrder[0][0]))
+                //{
+                //    return reason;
+                //}
+
+                var correctOrder = 0;
+                var correctEmptyPoints = 0;
+
+                for (int k = 0; k < answer.runeOrder[i][j].Length; k++)
                 {
-                    for (int j = 0; j < other.runeOrder[i].Length; j++)
+
+                    if (answer.runeOrder[i][j][k] == 0)
                     {
-                        if (Enumerable.SequenceEqual(runeOrder[0][0], other.runeOrder[i][j]))
-                        {
-                            return true;
-                        }
+                        correctEmptyPoints++;
+                    }
+
+                    if (answer.runeOrder[i][j][k] == player.runeOrder[0][0][k])
+                    {
+                        correctOrder++;
                     }
                 }
 
+                if (correctOrder == 8)
+                {
+                    return "t";
+                }
+                else if (correctOrder >= closestCorrectOrder)
+                {
+                    closestCorrectOrder = correctOrder;
+                    if (correctEmptyPoints - emptyPoints > 0)
+                    {
+                        closestCorrectPoints = Mathf.Abs(correctEmptyPoints - emptyPoints);
+                        extra = true;
+                    }
+                    else
+                    {
+                        closestCorrectPoints = Mathf.Abs(correctEmptyPoints - emptyPoints);
+                        extra = false;
+                    }
+                }
             }
-        }
 
-        return false;
+            if (closestCorrectPoints == 0)
+            {
+                return "fIncorrect Order: " + (8 - closestCorrectOrder) + " rune points deviate from order.";
+            }
+            else
+            {
+                if (extra)
+                {
+                    return "fIncorrect Rune Point: There are " + (closestCorrectPoints) + " extra rune points and " + (8 - closestCorrectOrder) + " rune points deviate from order.";
+                }
+                else
+                {
+                    return "fIncorrect Rune Point: There are " + (closestCorrectPoints) + " missing rune points and " + (8 - closestCorrectOrder - closestCorrectPoints) + " rune points deviate from order.";
+                }
+            }
+
+        }
+        else
+        {
+            return "fThis spell requires a different element.";
+        }
     }
 
     public override int GetHashCode()
     {
         return base.GetHashCode();
     }
-
-    /*
-    public string GetOrderText()
-    {
-        return text == null ? "" : text;
-    }
-
-    public string[] GetOrderType()
-    {
-        return type == null ? new string[1] : type;
-    }
-
-    public int[][][] GetOrderRuneOrder()
-    {
-        return runeOrder == null ? new int[1][][] : runeOrder;
-    }
-    */
 
 }

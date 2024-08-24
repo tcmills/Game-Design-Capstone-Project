@@ -37,6 +37,7 @@ public class SpellManager : MonoBehaviour
     public bool canSubmit = false;
     private int timeLimit = 180;
     private bool gameRunning = true;
+    public bool timerStarted = false;
 
     public GameObject orderPromptUI;
     public MoneyTracker tracker;
@@ -48,6 +49,9 @@ public class SpellManager : MonoBehaviour
     public GameObject quotaUI;
     public GameObject sun;
     public Slider timerUI;
+    public GameObject man;
+    public GameObject woman;
+    public CrystalLightControl crystalLight;
 
     private AudioSource audioSource;
     public AudioClip correct;
@@ -124,13 +128,16 @@ public class SpellManager : MonoBehaviour
         {
             Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
-            if (input.Equals(answerOrder))
+            var answer = input.Equals(answerOrder);
+
+            if (answer.Substring(0,1) == "t")
             {
                 audioSource.PlayOneShot(correct);
                 tracker.AddMoney(100);
             }
             else
             {
+                Debug.Log(answer.Substring(1));
                 audioSource.PlayOneShot(incorrect);
                 tracker.SubMoney(50);
             }
@@ -142,7 +149,11 @@ public class SpellManager : MonoBehaviour
                 orderPromptUI.SetActive(false);
             }
 
+            DeactivateNPC();
+
             canSubmit = false;
+
+            crystalLight.gameObject.SetActive(true);
 
         }
 
@@ -173,6 +184,26 @@ public class SpellManager : MonoBehaviour
     {
         sun.transform.RotateAround(sun.transform.position, sun.transform.up, 1);
         timerUI.value++;
+    }
+
+    public void ActivateNPC()
+    {
+        var gender = Random.Range(0, 2);
+        
+        if (gender == 0)
+        {
+            man.SetActive(true);
+        }
+        else if (gender == 1)
+        {
+            woman.SetActive(true);
+        }
+    }
+
+    public void DeactivateNPC()
+    {
+        man.SetActive(false);
+        woman.SetActive(false);
     }
 
     public void ClearSpell()

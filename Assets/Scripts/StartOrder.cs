@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class StartOrder : MonoBehaviour, IPointerClickHandler
+public class StartOrder : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     public GameObject orderPromptUI;
@@ -13,6 +13,7 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler
     public OrderGenerator orderGenerator;
     private Order order;
     private AudioSource audioSource;
+    private CrystalLightControl light;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -48,12 +49,17 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler
                 text.text = order.text;
             }
 
+            spellManager.ActivateNPC();
             spellManager.SetAnswer(order);
             spellManager.canSubmit = true;
             orderPromptUI.SetActive(true);
 
-            StartCoroutine(spellManager.TimeLimit());
-            StartCoroutine(spellManager.SunMove());
+            if (!spellManager.timerStarted)
+            {
+                StartCoroutine(spellManager.TimeLimit());
+                StartCoroutine(spellManager.SunMove());
+                spellManager.timerStarted = true;
+            }
         }
     }
 
@@ -62,11 +68,16 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler
     {
         text = orderPromptUI.transform.GetChild(1).gameObject.GetComponent<TMP_Text>();
         audioSource = GetComponent<AudioSource>();
+        light = transform.GetChild(3).gameObject.GetComponent<CrystalLightControl>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        light.SetPointerOn(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        light.SetPointerOn(false);
     }
 }
