@@ -35,12 +35,12 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
                         order.type = new string[1] { order.type[0] };
                         order.runeOrder = new int[1][][] { order.runeOrder[0] };
                     }
-                    text.text = order.text + ". Also, don't use any materials. Arcane spells don't need 'em, and I don't want to pay any extra.";
+                    text.text = order.text;// + " Also, don't use any gems. Arcane spells don't need 'em, and I don't want to pay any extra.";
                 }
                 else if (secondOrder)
                 {
                     order = orderGenerator.GetDay1NotArcaneOrder();
-                    text.text = order.text + ". Don't forget to add the correct gem to your spellbook. It would be really bad if I blew up my tower again.";
+                    text.text = order.text;// + " Don't forget to add the correct gem to your spellbook. It would be really bad if I blew up my tower again.";
                 }
                 else
                 {
@@ -63,7 +63,6 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             if (!spellManager.timerStarted)
             {
                 StartCoroutine(spellManager.TimeLimit());
-                StartCoroutine(spellManager.SunMove());
                 spellManager.timerStarted = true;
             }
         }

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Order
 {
 
+    public int level { get; set; }
     public string text { get; set; }
     public string[] type { get; set; }
     public int[][][] runeOrder { get; set; }

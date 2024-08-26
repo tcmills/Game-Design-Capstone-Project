@@ -30,12 +30,12 @@ public class SpellManager : MonoBehaviour
     private int[] runePointOrder = { 0, 0, 0, 0, 0, 0, 0, 0 };
     private int order = 0;
     private string type = "default";
-    private int quota = 1000;
+    private int quota;
 
     private Order answerOrder;
 
     public bool canSubmit = false;
-    private int timeLimit = 180;
+    private float timeLimit = 300.0f;
     private bool gameRunning = true;
     public bool timerStarted = false;
 
@@ -52,7 +52,7 @@ public class SpellManager : MonoBehaviour
     public GameObject man;
     public GameObject woman;
     public CrystalLightControl crystalLight;
-    public DayManager dayManager;
+    //public DayManager dayManager;
     public GameObject playAgainButton;
     public GameObject continueButton;
 
@@ -83,6 +83,19 @@ public class SpellManager : MonoBehaviour
         runePoint7Script = runePoint7.GetComponent<RunePoint>();
 
         audioSource = GetComponent<AudioSource>();
+
+        if (DayManager.day == 1)
+        {
+            quota = 500;
+        }
+        else if (DayManager.day == 2)
+        {
+            quota = 750;
+        }
+        else if (DayManager.day == 3)
+        {
+            quota = 1250;
+        }
         quotaUI.GetComponent<TMP_Text>().text += "" + quota;
 
     }
@@ -93,11 +106,17 @@ public class SpellManager : MonoBehaviour
         {
             pauseManager.TogglePause();
         }
+
+        if (timerStarted && gameRunning)
+        {
+            MoveSun();
+        }
     }
 
 
     public void ResetLevel()
     {
+        DayManager.day = 1;
         SceneManager.LoadScene("Market");
     }
 
@@ -153,20 +172,20 @@ public class SpellManager : MonoBehaviour
 
         if (canSubmit && order != 0)
         {
-            Order input = new Order() { text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
+            Order input = new Order() { level = 0, text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
             var answer = input.EqualsWhy(answerOrder);
 
             if (answer.Substring(0,1) == "t")
             {
                 audioSource.PlayOneShot(correct);
-                tracker.AddMoney(100);
+                tracker.AddMoney(answerOrder.level * 50);
             }
             else
             {
                 Debug.Log(answer.Substring(1));
                 audioSource.PlayOneShot(incorrect);
-                tracker.SubMoney(50);
+                tracker.SubMoney(answerOrder.level * 25);
             }
 
             ClearSpell();
@@ -197,20 +216,11 @@ public class SpellManager : MonoBehaviour
         EndGame();
     }
 
-    public IEnumerator SunMove()
-    {
-        while (gameRunning)
-        {
-            yield return new WaitForSeconds(1);
-            MoveSun();
-        }
-
-    }
-
     private void MoveSun()
     {
-        sun.transform.RotateAround(sun.transform.position, sun.transform.up, 1);
-        timerUI.value++;
+        //Debug.Log("" + (180f / timeLimit) * Time.deltaTime);
+        sun.transform.RotateAround(sun.transform.position, sun.transform.up, (180 / timeLimit) * Time.deltaTime);
+        timerUI.value += (180f / timeLimit) * Time.deltaTime;
     }
 
     public void ActivateNPC()

@@ -49,12 +49,12 @@ public class RunePoint : MonoBehaviour
         } else if (color == "blue")
         {
 
-            line.GetComponent<Image>().color = new Color32(54, 73, 222, 255);
+            line.GetComponent<Image>().color = new Color32(54, 115, 222, 255);
 
         } else if (color == "green")
         {
 
-            line.GetComponent<Image>().color = new Color32(95, 207, 56, 255);
+            line.GetComponent<Image>().color = new Color32(134, 190, 26, 255);
 
         } else if (color == "pink")
         {

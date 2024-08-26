@@ -18,6 +18,7 @@ public class StartGame : MonoBehaviour
             PauseManager.IsPaused = false;
             Time.timeScale = 1;
         }
+        DayManager.day = 1;
         SceneManager.LoadScene("Title");
     }
 
