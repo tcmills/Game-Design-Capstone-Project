@@ -52,6 +52,9 @@ public class SpellManager : MonoBehaviour
     public GameObject man;
     public GameObject woman;
     public CrystalLightControl crystalLight;
+    public DayManager dayManager;
+    public GameObject playAgainButton;
+    public GameObject continueButton;
 
     private AudioSource audioSource;
     public AudioClip correct;
@@ -104,14 +107,38 @@ public class SpellManager : MonoBehaviour
 
         if (int.Parse(tracker.GetMoney()) >= quota)
         {
-            gameOverText.GetComponent<TMP_Text>().text = "You Win";
+            if (DayManager.day == 1)
+            {
+                gameOverText.GetComponent<TMP_Text>().text = "Day 1: Win";
+            }
+            else if (DayManager.day == 2)
+            {
+                gameOverText.GetComponent<TMP_Text>().text = "Day 2: Win";
+            }
+            else if (DayManager.day == 3)
+            {
+                gameOverText.GetComponent<TMP_Text>().text = "Day 3: Win";
+            }
+
+            if (DayManager.day != 3)
+            {
+                continueButton.SetActive(true);
+            }
+            else
+            {
+                playAgainButton.SetActive(true);
+            }
         }
         else
         {
             gameOverText.GetComponent<TMP_Text>().text = "You Lose";
+            playAgainButton.SetActive(true);
         }
 
         finalScoreText.GetComponent<TMP_Text>().text += tracker.GetMoney();
+
+        
+
         gameOverMenu.SetActive(true);
         gameRunning = false;
     }
@@ -157,7 +184,7 @@ public class SpellManager : MonoBehaviour
 
         }
 
-        if (orderGenerator.GetOrderSize() == 0 || int.Parse(tracker.GetMoney()) >= quota)
+        if (orderGenerator.GetOrderSize(DayManager.day) == 0 || int.Parse(tracker.GetMoney()) >= quota)
         {
             EndGame();
         }

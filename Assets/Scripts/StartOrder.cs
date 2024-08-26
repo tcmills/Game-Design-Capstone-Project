@@ -14,40 +14,46 @@ public class StartOrder : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
     private Order order;
     private AudioSource audioSource;
     private CrystalLightControl light;
+    public DayManager dayManager;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (orderPromptUI != null && spellManager != null && orderGenerator != null && spellManager.canSubmit == false)
         {
             audioSource.Play();
-            var firstOrder = orderGenerator.GetOrderStartingSize() == orderGenerator.GetOrderSize();
-            var secondOrder = (orderGenerator.GetOrderStartingSize() - orderGenerator.GetOrderSize()) == 1;
 
-
-            //Debug.Log("" + order.GetOrderText());
-            //Debug.Log("" + order.GetOrderType());
-            //Debug.Log("" + order.GetOrderRuneOrder());
-
-            if (firstOrder)
+            if (DayManager.day == 1)
             {
-                order = orderGenerator.GetArcaneOrder();
-                if (order.type.Length == 2)
+                var firstOrder = orderGenerator.GetOrderStartingSize(DayManager.day) == orderGenerator.GetOrderSize(DayManager.day);
+                var secondOrder = (orderGenerator.GetOrderStartingSize(DayManager.day) - orderGenerator.GetOrderSize(DayManager.day)) == 1;
+
+                if (firstOrder)
                 {
-                    order.type = new string[1] { order.type[0] };
-                    order.runeOrder = new int[1][][] { order.runeOrder[0] };
+                    order = orderGenerator.GetDay1ArcaneOrder();
+                    if (order.type.Length == 2)
+                    {
+                        order.type = new string[1] { order.type[0] };
+                        order.runeOrder = new int[1][][] { order.runeOrder[0] };
+                    }
+                    text.text = order.text + ". Also, don't use any materials. Arcane spells don't need 'em, and I don't want to pay any extra.";
                 }
-                text.text = order.text + ". Also, don't use any materials. Arcane spells don't need 'em, and I don't want to pay any extra.";
-            }
-            else if (secondOrder)
-            {
-                order = orderGenerator.GetNotArcaneOrder();
-                text.text = order.text + ". Don't forget to add the correct gem to your spellbook. It would be really bad if I blew up my tower again.";
+                else if (secondOrder)
+                {
+                    order = orderGenerator.GetDay1NotArcaneOrder();
+                    text.text = order.text + ". Don't forget to add the correct gem to your spellbook. It would be really bad if I blew up my tower again.";
+                }
+                else
+                {
+                    order = orderGenerator.GetOrder(DayManager.day);
+                    text.text = order.text;
+                }
             }
             else
             {
-                order = orderGenerator.GetOrder();
+                order = orderGenerator.GetOrder(DayManager.day);
                 text.text = order.text;
             }
+
 
             spellManager.ActivateNPC();
             spellManager.SetAnswer(order);
