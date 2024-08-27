@@ -55,6 +55,8 @@ public class SpellManager : MonoBehaviour
     //public DayManager dayManager;
     public GameObject playAgainButton;
     public GameObject continueButton;
+    public GameObject info2;
+    public GameObject info3;
 
     private AudioSource audioSource;
     public AudioClip correct;
@@ -200,6 +202,9 @@ public class SpellManager : MonoBehaviour
             canSubmit = false;
 
             crystalLight.gameObject.SetActive(true);
+
+            info2.SetActive(false);
+            info3.SetActive(false);
 
         }
 
