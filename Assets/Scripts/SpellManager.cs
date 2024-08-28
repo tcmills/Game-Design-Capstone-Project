@@ -36,7 +36,7 @@ public class SpellManager : MonoBehaviour
 
     public bool canSubmit = false;
     private float timeLimit = 300.0f;
-    private bool gameRunning = true;
+    public bool gameRunning = true;
     public bool timerStarted = false;
 
     public GameObject orderPromptUI;
@@ -61,6 +61,8 @@ public class SpellManager : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip correct;
     public AudioClip incorrect;
+    public AudioClip win;
+    public AudioClip lose;
 
     // Start is called before the first frame update
     void Start()
@@ -128,6 +130,8 @@ public class SpellManager : MonoBehaviour
 
         if (int.Parse(tracker.GetMoney()) >= quota)
         {
+            audioSource.PlayOneShot(win);
+
             if (DayManager.day == 1)
             {
                 gameOverText.GetComponent<TMP_Text>().text = "Day 1: Win";
@@ -152,6 +156,7 @@ public class SpellManager : MonoBehaviour
         }
         else
         {
+            audioSource.PlayOneShot(lose);
             gameOverText.GetComponent<TMP_Text>().text = "You Lose";
             playAgainButton.SetActive(true);
         }

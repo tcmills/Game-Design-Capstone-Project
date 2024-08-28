@@ -13,6 +13,9 @@ public class DraggableMaterial : MonoBehaviour, IDragHandler, IEndDragHandler
     private bool wasPaused = false;
     private PointerEventData currentPointerEventData;
 
+    public AudioSource audioSource;
+    public AudioClip clip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,8 @@ public class DraggableMaterial : MonoBehaviour, IDragHandler, IEndDragHandler
             
             if (globalMousePos.x > -59.35 && globalMousePos.x < -54.85 && globalMousePos.y > -4.3 && globalMousePos.y < -1.2)
             {
+
+                audioSource.PlayOneShot(clip);
 
                 var type = "";
 

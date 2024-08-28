@@ -10,6 +10,7 @@ public class RunePoint : MonoBehaviour
     public GameObject line;
     private SpellManager spellManager;
     private Toggle runePoint;
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,13 @@ public class RunePoint : MonoBehaviour
 
         spellManager = transform.parent.parent.gameObject.GetComponent<SpellManager>();
         runePoint = GetComponent<Toggle>();
+        audioSource = GetComponent<AudioSource>();
 
         runePoint.onValueChanged.AddListener(delegate
         {
             if (runePoint.isOn == true)
             {
+                audioSource.Play();
                 spellManager.Toggled(runePointId, runePoint.isOn);
                 runePoint.enabled = false;
             }

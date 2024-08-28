@@ -7,17 +7,19 @@ public class OpenRuneMenu : MonoBehaviour, IPointerClickHandler, IPointerEnterHa
 {
 
     public GameObject runesMenu;
+    private AudioSource audioSource;
     public GameObject light1;
     public GameObject light2;
 
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        runesMenu.SetActive(true);
-    }
-
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        audioSource.Play();
+        runesMenu.SetActive(true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
