@@ -389,7 +389,7 @@ public class OrderGenerator : MonoBehaviour
         {
             name = "Stealth Walk",
             level = 1,
-            text = "There is a cave I need to get into, but a monster sleeps in it. Is there a spell that could help me sneak past it?.",
+            text = "There is a cave I need to get into, but a monster sleeps in it. Is there a spell that could help me sneak past it?",
             type = new string[1] { "air" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 4, 3, 0, 0, 0, 2, 0, 1 }, new int[8] { 1, 2, 0, 0, 0, 3, 0, 4 } } }
         });
