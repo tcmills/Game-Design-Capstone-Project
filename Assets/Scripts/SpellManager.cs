@@ -57,6 +57,8 @@ public class SpellManager : MonoBehaviour
     public GameObject continueButton;
     public GameObject info2;
     public GameObject info3;
+    public GameObject wrongAnswer;
+    private TMP_Text wrongAnswerText;
 
     private AudioSource audioSource;
     public AudioClip correct;
@@ -93,6 +95,7 @@ public class SpellManager : MonoBehaviour
         runePoint7Script = runePoint7.GetComponent<RunePoint>();
 
         audioSource = GetComponent<AudioSource>();
+        wrongAnswerText = wrongAnswer.GetComponent<TMP_Text>();
 
         if (DayManager.day == 1)
         {
@@ -185,20 +188,22 @@ public class SpellManager : MonoBehaviour
 
         if (canSubmit && order != 0)
         {
-            Order input = new Order() { level = 0, text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
+            Order input = new Order() { name = "", level = 0, text = "", type = new string[1] { type }, runeOrder = new int[1][][] { new int[1][] { runePointOrder } } };
 
-            var answer = input.EqualsWhy(answerOrder);
+            var answer = input.Equals(answerOrder);
 
-            if (answer.Substring(0,1) == "t")
+            if (answer)
             {
                 audioSource.PlayOneShot(correct);
                 tracker.AddMoney(answerOrder.level * 50);
             }
             else
             {
-                Debug.Log(answer.Substring(1));
+                //Debug.Log(answer.Substring(1));
                 audioSource.PlayOneShot(incorrect);
                 tracker.SubMoney(answerOrder.level * 25);
+                wrongAnswerText.text = answerOrder.name;
+                StartCoroutine(WrongAnswer());
             }
 
             ClearSpell();
@@ -230,6 +235,13 @@ public class SpellManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeLimit);
         EndGame();
+    }
+
+    public IEnumerator WrongAnswer()
+    {
+        wrongAnswer.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        wrongAnswer.SetActive(false);
     }
 
     private void MoveSun()

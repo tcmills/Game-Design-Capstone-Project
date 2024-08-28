@@ -37,6 +37,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 0: Arcane:Air/Levitate
         arcaneOrders1.Add(new Order()
         { 
+            name = "Levitate",
             level = 1,
             text = "I have to carry a bunch of stuff tomorrow. Do you got a spell that can make objects float?", 
             type = new string[2] { "default", "air" }, 
@@ -46,6 +47,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 1: Arcane/MagicMissile
         arcaneOrders2.Add(new Order()
         {
+            name = "Magic Missile",
             level = 2,
             text = "Magic is new to me, but I want to try it out. Do you have a simple magic attack spell that I could try?",
             type = new string[1] { "default" },
@@ -55,6 +57,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 2: Arcane/Teleport
         arcaneOrders1.Add(new Order()
         {
+            name = "Teleport",
             level = 1,
             text = "I just finished a long journey and am ready to go home. Can I have a teleport spell?",
             type = new string[1] { "default" },
@@ -64,6 +67,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 3: Arcane/Slow
         arcaneOrders1.Add(new Order()
         {
+            name = "Slow",
             level = 1,
             text = "I've never used magic before, but want to try it during my next adventure. Is there a spell that can inhibit a monster's movement?",
             type = new string[1] { "default" },
@@ -73,6 +77,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 4: Arcane/Haste
         arcaneOrders1.Add(new Order()
         {
+            name = "Haste",
             level = 1,
             text = "There are so many chores that I need to get done. Do you have a spell that can make me move faster?",
             type = new string[1] { "default" },
@@ -82,8 +87,9 @@ public class OrderGenerator : MonoBehaviour
         //Order 5: Arcane/Shield
         arcaneOrders2.Add(new Order()
         {
+            name = "Shield",
             level = 2,
-            text = "Attacks keep hitting me even though I dodge them. Can I have a spell that helps be block?",
+            text = "Attacks keep hitting me even though I dodge them. Can I have a spell that helps me block?",
             type = new string[1] { "default" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 1, 2, 5, 6, 4, 3 }, new int[8] { 0, 0, 6, 5, 2, 1, 3, 4 } } }
         });
@@ -91,6 +97,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 6: Arcane/MagicArmor
         arcaneOrders2.Add(new Order()
         {
+            name = "Magic Armor",
             level = 2,
             text = "I keep getting injured during fights, but I'm not strong enough to wear armor. Can you help me?",
             type = new string[1] { "default" },
@@ -100,6 +107,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 7: Arcane/Invisibility
         arcaneOrders2.Add(new Order()
         {
+            name = "Invisibility",
             level = 2,
             text = "I need to sneak into someplace tonight and need a spell to help me do it. Really don't need anybody seeing me.",
             type = new string[1] { "default" },
@@ -109,6 +117,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 8: Fire:Water/Boil/Steam
         fireOrders2.Add(new Order()
         {
+            name = "Boil or Steam",
             level = 2,
             text = "I want to take a hot bath tonight, but it always takes so long to heat up water. Do you have a spell to speed it up?",
             type = new string[2] { "fire", "water" },
@@ -118,6 +127,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 9: Fire/Fire Stream
         fireOrders3.Add(new Order()
         {
+            name = "Fire Stream",
             level = 3,
             text = "My house is infested with bugs and I am ready to burn the whole thing down. I'm going to need a lot of fire though.",
             type = new string[1] { "fire" },
@@ -127,6 +137,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 10: Fire/Explosion
         fireOrders3.Add(new Order()
         {
+            name = "Explosion",
             level = 3,
             text = "We ran out of materials to blow up boulders at the mines. Do you got something we could use instead?",
             type = new string[1] { "fire" },
@@ -136,6 +147,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 11: Fire:Nature/Lightning
         fireOrders1.Add(new Order()
         {
+            name = "Lightning",
             level = 1,
             text = "I think lightning is cool. Can I have some?",
             type = new string[2] { "fire", "nature" },
@@ -145,6 +157,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 12: Fire/Warm
         fireOrders1.Add(new Order()
         {
+            name = "Warm",
             level = 1,
             text = "I'm going on a trip up north, but I always get so cold. Do you have a spell that could help with that?",
             type = new string[1] { "fire" },
@@ -154,6 +167,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 13: Fire/Burn
         fireOrders1.Add(new Order()
         {
+            name = "Burn",
             level = 1,
             text = "I got a bunch of trash at my place. Too much to move. Im looking to burn it all, but I dont want to start a huge fire.",
             type = new string[1] { "fire" },
@@ -163,6 +177,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 14: Fire/Cook
         fireOrders2.Add(new Order()
         {
+            name = "Cook",
             level = 2,
             text = "I'm going on a journey into the wilderness. It would be really helpful if I didn't have to make a fire everytime I wanted to have a meal.",
             type = new string[1] { "fire" },
@@ -172,6 +187,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 15: Fire/Ignite
         fireOrders1.Add(new Order()
         {
+            name = "Ignite",
             level = 1,
             text = "Starting a fire is so hard. Do you have something to make it easier?",
             type = new string[1] { "fire" },
@@ -181,6 +197,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 16: Water/Drink
         waterOrders1.Add(new Order()
         {
+            name = "Drink",
             level = 1,
             text = "I am very thirsty, but getting clean water is always a hastle. I dont have much money but I'll pay to get some clean water.",
             type = new string[1] { "water" },
@@ -190,6 +207,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 17: Water/Create Water
         waterOrders1.Add(new Order()
         {
+            name = "Create Water",
             level = 1,
             text = "I'm taking supplies across the desert again soon. I always get so thirsty, but the water I need would be too heavy to carry.",
             type = new string[1] { "water" },
@@ -199,6 +217,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 18: Water/Freeze
         waterOrders1.Add(new Order()
         {
+            name = "Freeze",
             level = 1,
             text = "The druids say that its going to get very hot today. Do you have a spell that could help me make some ice?",
             type = new string[1] { "water" },
@@ -208,6 +227,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 19: Water/Waterfall
         waterOrders3.Add(new Order()
         {
+            name = "Waterfall",
             level = 3,
             text = "I want to flush out a cave nearby my house. Is there a spell that would let me create a large constant flow of water.",
             type = new string[1] { "water" },
@@ -217,8 +237,9 @@ public class OrderGenerator : MonoBehaviour
         //Order 20: Water/Water Breathing
         waterOrders1.Add(new Order()
         {
+            name = "Water Breathing",
             level = 1,
-            text = "Apparently, theives use to hide there treasure at the bottom of a lake near here. Can I have a spell that would help me explore it?",
+            text = "Apparently, theives used to hide there treasure at the bottom of a lake near here. Can I have a spell that would help me explore it?",
             type = new string[1] { "water" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 0, 0, 1, 6, 3, 4, 2, 5 }, new int[8] { 0, 0, 6, 1, 4, 3, 5, 2 } } }
         });
@@ -226,6 +247,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 21: Water/Control Water
         waterOrders2.Add(new Order()
         {
+            name = "Control Water",
             level = 2,
             text = "It's been raining so much lately that my house has started to flood. Can you help me remove of all the water?",
             type = new string[1] { "water" },
@@ -235,6 +257,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 22: Water/Rain
         waterOrders2.Add(new Order()
         {
+            name = "Rain",
             level = 2,
             text = "I like the rain. It helps me focus when I am working. Can you help me make it whenever I want?",
             type = new string[2] { "water", "nature" },
@@ -244,6 +267,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 23: Nature/Grow
         natureOrders1.Add(new Order()
         {
+            name = "Grow",
             level = 1,
             text = "It takes so long for my crops to grow. Do you have something that would speed them up?",
             type = new string[1] { "nature" },
@@ -253,6 +277,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 24: Nature/Entangle
         natureOrders1.Add(new Order()
         {
+            name = "Entangle",
             level = 1,
             text = "Something keeps sneaking into my garden and eating my crops. Can I have a spell that will let me lay a trap for it?",
             type = new string[1] { "nature" },
@@ -262,6 +287,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 25: Nature/Speak with Nature
         natureOrders2.Add(new Order()
         {
+            name = "Speak with Nature",
             level = 2,
             text = "I've always been curious about what my pets are thinking. I would really like to know.",
             type = new string[1] { "nature" },
@@ -271,6 +297,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 26: Nature/Heal
         natureOrders2.Add(new Order()
         {
+            name = "Heal",
             level = 2,
             text = "I keep getting hurt while adventuring. I guess I'm just clumsy, but I don't want to stop. Can I have some extra healing?",
             type = new string[1] { "nature" },
@@ -280,6 +307,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 27: Nature/Move Stone
         natureOrders2.Add(new Order()
         {
+            name = "Move Stone",
             level = 2,
             text = "A massive boulder fell down the mountain and landed right next to my house. I would like it gone.",
             type = new string[1] { "nature" },
@@ -287,9 +315,10 @@ public class OrderGenerator : MonoBehaviour
         });
 
         //Order 28: Nature/Earthquake
-        natureOrders3.Add(new Order()
+        natureOrders2.Add(new Order()
         {
-            level = 3,
+            name = "Earthquake",
+            level = 2,
             text = "There is an old building on my property and I would like to colapse it. It's very big, so I am prepared to pay for a powerful spell.",
             type = new string[1] { "nature" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 5, 4, 1, 8, 3, 7, 2, 6 }, new int[8] { 4, 5, 8, 1, 6, 2, 7, 3 } } }
@@ -298,6 +327,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 29: Nature/Summon Treant
         natureOrders3.Add(new Order()
         {
+            name = "Summon Treant",
             level = 3,
             text = "I want a friend.",
             type = new string[1] { "nature" },
@@ -307,14 +337,17 @@ public class OrderGenerator : MonoBehaviour
         //Order 30: Air/Tornado
         airOrders2.Add(new Order()
         {
+            name = "Tornado",
             level = 2,
             text = "My group and I are going to be fighting a very powerful monster later. It would be very helpful if we could fling in to the air.",
+            type = new string[1] { "air" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 5, 3, 0, 4, 6, 7, 2, 1 }, new int[8] { 3, 5, 0, 4, 2, 1, 6, 7 } } }
         });
 
         //Order 31: Air/Fly
         airOrders2.Add(new Order()
         {
+            name = "Fly",
             level = 2,
             text = "I need to travel to the next town over quickly. I've never been there before, so I cant teleport. I there another way I could get there quickly?",
             type = new string[1] { "air" },
@@ -324,6 +357,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 32: Air/Wind Scythe
         airOrders3.Add(new Order()
         {
+            name = "Wind Scythe",
             level = 3,
             text = "I have to chop down a bunch of trees. I would like to get it done all at once if there is a spell that could do that?",
             type = new string[1] { "air" },
@@ -333,6 +367,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 33: Air/Gust Minor
         airOrders1.Add(new Order()
         {
+            name = "Gust Minor",
             level = 1,
             text = "It gets so hot in my house. Is there a spell that creates some light wind I could blow around?",
             type = new string[1] { "air" },
@@ -342,6 +377,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 34: Air/Gust Major
         airOrders2.Add(new Order()
         {
+            name = "Gust Major",
             level = 2,
             text = "My land keeps getting covered in leaves, and I would like some powerful wind to blow them all away all at once.",
             type = new string[1] { "air" },
@@ -351,6 +387,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 35: Air/Stealth Walk
         airOrders1.Add(new Order()
         {
+            name = "Stealth Walk",
             level = 1,
             text = "There is a cave I need to get into, but a monster sleeps in it. Is there a spell that could help me sneak past it?.",
             type = new string[1] { "air" },
@@ -360,6 +397,7 @@ public class OrderGenerator : MonoBehaviour
         //Order 36: Air/Slow Fall
         airOrders2.Add(new Order()
         {
+            name = "Slow Fall",
             level = 2,
             text = "My group and I are going to be climbing a mountain, but I am afraid of heights. Can I have a spell that would protect me from falling?",
             type = new string[1] { "air" },
