@@ -64,6 +64,12 @@ public class SpellManager : MonoBehaviour
     public AudioClip win;
     public AudioClip lose;
 
+    public GameObject arcaneFire;
+    public GameObject fireFire;
+    public GameObject waterFire;
+    public GameObject natureFire;
+    public GameObject airFire;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -273,6 +279,12 @@ public class SpellManager : MonoBehaviour
         runePoint6Script.ResetRunePoint();
         runePoint7Script.ResetRunePoint();
 
+        arcaneFire.SetActive(true);
+        fireFire.SetActive(false);
+        waterFire.SetActive(false);
+        natureFire.SetActive(false);
+        airFire.SetActive(false);
+
         //Debug.Log("" + runePointValues[0] + runePointValues[1] + runePointValues[2] + runePointValues[3] + runePointValues[4] + runePointValues[5] + runePointValues[6] + runePointValues[7]);
         //Debug.Log("" + runePointOrder[0] + runePointOrder[1] + runePointOrder[2] + runePointOrder[3] + runePointOrder[4] + runePointOrder[5] + runePointOrder[6] + runePointOrder[7]);
         //Debug.Log("\n");
@@ -388,6 +400,12 @@ public class SpellManager : MonoBehaviour
             runePoint6Script.changeColor("red");
             runePoint7Script.changeColor("red");
 
+            arcaneFire.SetActive(false);
+            fireFire.SetActive(true);
+            waterFire.SetActive(false);
+            natureFire.SetActive(false);
+            airFire.SetActive(false);
+
         } else if (spellType == "water")
         {
             type = "water";
@@ -399,6 +417,12 @@ public class SpellManager : MonoBehaviour
             runePoint5Script.changeColor("blue");
             runePoint6Script.changeColor("blue");
             runePoint7Script.changeColor("blue");
+
+            arcaneFire.SetActive(false);
+            fireFire.SetActive(false);
+            waterFire.SetActive(true);
+            natureFire.SetActive(false);
+            airFire.SetActive(false);
 
         } else if (spellType == "nature")
         {
@@ -412,6 +436,12 @@ public class SpellManager : MonoBehaviour
             runePoint6Script.changeColor("green");
             runePoint7Script.changeColor("green");
 
+            arcaneFire.SetActive(false);
+            fireFire.SetActive(false);
+            waterFire.SetActive(false);
+            natureFire.SetActive(true);
+            airFire.SetActive(false);
+
         } else if (spellType == "air")
         {
             type = "air";
@@ -424,8 +454,15 @@ public class SpellManager : MonoBehaviour
             runePoint6Script.changeColor("pink");
             runePoint7Script.changeColor("pink");
 
+            arcaneFire.SetActive(false);
+            fireFire.SetActive(false);
+            waterFire.SetActive(false);
+            natureFire.SetActive(false);
+            airFire.SetActive(true);
+
         } else
         {
+            type = "default";
             runePoint0Script.changeColor("");
             runePoint1Script.changeColor("");
             runePoint2Script.changeColor("");
@@ -434,6 +471,12 @@ public class SpellManager : MonoBehaviour
             runePoint5Script.changeColor("");
             runePoint6Script.changeColor("");
             runePoint7Script.changeColor("");
+
+            arcaneFire.SetActive(true);
+            fireFire.SetActive(false);
+            waterFire.SetActive(false);
+            natureFire.SetActive(false);
+            airFire.SetActive(false);
         }
     }
 
