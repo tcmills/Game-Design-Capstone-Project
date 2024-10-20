@@ -14,3 +14,6 @@ Progress update video I made during development:<br/>
 "Discussion 21.1: Show and Tell (To the Magic Shop)" (4:47) https://youtu.be/prmW3zAOe14
 
 The final release of To the Magic Shop on Itch.io: https://tcmills.itch.io/to-the-magic-shop
+
+
+My complete portfolio: https://github.com/tcmills/tyler-mills-repository
