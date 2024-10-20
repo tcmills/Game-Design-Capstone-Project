@@ -1,4 +1,4 @@
-# Game Design Capstone Project
+# Game Design Capstone Project (To the Magic Shop)
 
 "To the Magic Shop: Game Overview, Expectations, and Design Goals" (2:19) https://youtu.be/7iLtUp8-q14
 
@@ -10,7 +10,7 @@ The latest build is in the "Build" folder.
 
 Documentation for the design, development, and testing process is in the "Design Process" folder.
 
-Progress update video I made during development:
+Progress update video I made during development:< br/ >
 "Discussion 21.1: Show and Tell (To the Magic Shop)" (4:47) https://youtu.be/prmW3zAOe14
 
 The final release of To the Magic Shop on Itch.io: https://tcmills.itch.io/to-the-magic-shop
