@@ -10,4 +10,6 @@ The latest build of To the Magic Shop is in the "Build" folder.
 
 Documentation for the design, development, and testing process of To the Magic Shop is in the "Design Process" folder.
 
+Progress Update video for To the Magic Shop that I made during development: "Discussion 21.1: Show and Tell (To the Magic Shop)" (4:47) https://youtu.be/prmW3zAOe14
+
 The final release of To the Magic Shop on Itch.io: https://tcmills.itch.io/to-the-magic-shop
