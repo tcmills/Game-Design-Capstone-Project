@@ -349,7 +349,7 @@ public class OrderGenerator : MonoBehaviour
         {
             name = "Fly",
             level = 2,
-            text = "I need to travel to the next town over quickly. I've never been there before, so I cant teleport. I there another way I could get there quickly?",
+            text = "I need to travel to the next town over quickly. I've never been there before, so I cant teleport. Is there another way I could get there quickly?",
             type = new string[1] { "air" },
             runeOrder = new int[1][][] { new int[2][] { new int[8] { 6, 5, 2, 1, 4, 0, 3, 0 }, new int[8] { 1, 2, 5, 6, 3, 0, 4, 0 } } }
         });
